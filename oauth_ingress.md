@@ -16,6 +16,7 @@ CLUSTERNAME="dmxauth"
 RG="dmxauthrg"
 LOCATION="eastus"
 FQDN=$DNSNAME".eastus.cloudapp.azure.com"
+CLUSTERRG="MC_${RG}_${CLUSTERNAME}_${LOCATION}"
 
 # GITHub Secrets (taken from your Github app)
 COOKIE=""
@@ -23,7 +24,7 @@ CLIENTID=""
 CLIENTSECRET=""
 
 ## Create loadBalancerIP
-az network public-ip create --resource-group MC_dmxauthrg_dmxauth_eastus --name myAKSPublicIP --allocation-method static
+az network public-ip create --resource-group $CLUSTERRG --name myAKSPublicIP --allocation-method static
 ```
 Now check the IP you got and use this IP in the follwing section.
 
